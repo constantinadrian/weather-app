@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { lazy, Suspense } from "react";
+import { Routes, Route } from "react-router-dom";
+
+import Spinner from "./components/UI/Spinner";
+import Weather from "./Pages/Weather";
+import FavoriteCities from "./Pages/FavoriteCities";
+import WeatherSettings from "./Pages/WeatherSettings";
+
+const WelcomePage = lazy(() => import("./Pages/WelcomePage"));
+const Layout = lazy(() => import("./components/Layout/Layout"));
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    return (
+        <Routes>
+            <Route
+                path="/"
+                element={
+                    <Suspense fallback={<Spinner />}>
+                        <WelcomePage />
+                    </Suspense>
+                }
+            />
+            <Route
+                path="/weather"
+                element={
+                    <Suspense fallback={<Spinner />}>
+                        <Layout />
+                    </Suspense>
+                }
+            >
+                <Route index element={<Weather />} />
+                <Route path="favorite-cities" element={<FavoriteCities />} />
+                <Route path="settings" element={<WeatherSettings />} />
+            </Route>
+        </Routes>
+    );
 }
 
 export default App;

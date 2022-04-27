@@ -1,0 +1,26 @@
+.header-bg {
+    background: #212529;
+}
+
+.navbar-icon-bars {
+    width: 2rem;
+    height: 2px;
+    display: block;
+    margin: 6px auto;
+}
+
+.NavLink {
+    margin-top: 1rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    width: fit-content;
+}
+
+@media (min-width: 992px) {
+    .NavLink {
+        margin-top: 0;
+        margin-right: 1.5rem;
+        padding: .5rem 0;
+    }
+    
+}
