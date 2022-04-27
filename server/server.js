@@ -2,9 +2,15 @@ const express = require("express"); // Use express as server
 const cookieParser = require("cookie-parser"); // a middleware which parses cookies attached to the client request object
 const csrf = require("csurf"); // Use csurf middleware to protect against cross-site request forgery (CSRF)
 const cors = require("cors");
+const axios = require('axios');
 
 // csrf route
 const csrfRoute = require('./api/csrf/csrf.routes')
+// weather forecast route
+const weatherRoute = require('./api/weather/weather.routes');
+
+// access the env variable
+require('dotenv').config()
 
 const PORT = process.env.PORT || 3001;
 const app = express(); // create express app
@@ -51,6 +57,9 @@ app.use((err, req, res, next) => {
 
 // route for request csrf token
 app.use('/api', csrfMiddleware, csrfRoute);
+
+// route for request weather forecast
+app.use('/api', csrfMiddleware, weatherRoute);
 
 app.listen(PORT, (err) => {
     if (err) throw err;
