@@ -30,7 +30,7 @@ const WeatherSearchForm = ({ setCityLocation, setCitySearchLocation, setWeatherD
 
     const fetchWeatherData = useCallback(
         (location) => {
-
+            
             const requestConfig = {
                 url: "/api/weather-forecast",
                 credentials: "include",

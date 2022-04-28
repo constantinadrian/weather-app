@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import checkIfJson from "../helpers/checkIfJson";
 
 const useHttp = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -18,11 +19,17 @@ const useHttp = () => {
                     : null,
             });
 
-            if (!response.ok) {
+            const responseText = await response.text();
+
+            if (!response.ok && checkIfJson(responseText)) {
+                const data = JSON.parse(responseText);
+                throw new Error(data.result.error.message);
+            }
+            else if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             
-            const data = await response.json();
+            const data = JSON.parse(responseText);
 
             applyData(data.result);
 
