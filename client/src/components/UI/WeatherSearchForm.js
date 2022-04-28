@@ -10,6 +10,7 @@ import useHttp from "../../hooks/useHttp";
 import { setLocation, setSearchLocation, setWeather } from "../../store/Weather/weatherActions";
 
 import { useForm, Controller } from "react-hook-form"; // react-hook-form
+import useDebounce from "../../hooks/useDebounce";
 
 
 const WeatherSearchForm = ({ setCityLocation, setCitySearchLocation, setWeatherData, ...props }) => {
@@ -30,7 +31,7 @@ const WeatherSearchForm = ({ setCityLocation, setCitySearchLocation, setWeatherD
 
     const fetchWeatherData = useCallback(
         (location) => {
-            
+
             const requestConfig = {
                 url: "/api/weather-forecast",
                 credentials: "include",
@@ -53,12 +54,27 @@ const WeatherSearchForm = ({ setCityLocation, setCitySearchLocation, setWeatherD
         [sendRequest, setCitySearchLocation, setWeatherData, props.csrf_token]
     );
 
+    useEffect(() => {
+        if (localStorage.getItem("location")) {
+            setCityLocation(localStorage.getItem("location"));
+        }
+    }, [setCityLocation]);
+
+    const debouncedLocation = useDebounce(props.location, 500);
+
     // run useEffect to fetch data when location has change/updated
     useEffect(() => {
-        if (props.location && props.location !== props.search_location ) {
-            fetchWeatherData(props.location);
+        if (debouncedLocation && debouncedLocation !== props.search_location ) {
+            fetchWeatherData(debouncedLocation);
         }
-    }, [fetchWeatherData, props.location, props.search_location]);
+    }, [fetchWeatherData, debouncedLocation, props.search_location]);
+
+    // set the search location in local storage after the data was fetch successfully
+    useEffect(() => {
+        if (props.search_location) {
+            localStorage.setItem("location", props.search_location);
+        }
+    }, [props.search_location]);
 
     // run useEffect to set the error on react-hook-form and set location to empty string
     useEffect(() => {
