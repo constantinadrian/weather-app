@@ -5,6 +5,8 @@ import FormControl from "react-bootstrap/FormControl";
 import Button from "react-bootstrap/Button";
 import classes from "./WeatherSearchForm.module.css";
 
+import { connect } from "react-redux";
+
 import { useForm, Controller } from "react-hook-form"; // react-hook-form
 
 
@@ -26,6 +28,8 @@ const WeatherSearchForm = (props) => {
         console.log(data);
         setValue("city", "");
     };
+
+    console.log('csrf_token', props.csrf_token)
 
     return (
         <>
@@ -91,4 +95,9 @@ const WeatherSearchForm = (props) => {
     );
 };
 
-export default WeatherSearchForm;
+const mapStateToProps = (state) => ({
+    csrf_token: state.csrf.csrf_token,
+});
+
+
+export default connect(mapStateToProps)(WeatherSearchForm);
