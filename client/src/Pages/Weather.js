@@ -1,8 +1,12 @@
 import React from "react";
+import Main from "../components/Layout/Main";
+import WeatherSearchForm from "../components/UI/WeatherSearchForm";
 
 const Weather = () => {
     return (
-        <p>Weather</p>
+        <Main>
+            <WeatherSearchForm/>
+        </Main>
     );
 };
 

@@ -21,8 +21,8 @@ const Header = (props) => {
                         </Link>
                     </Navbar.Brand>
                     <Navbar.Toggle className='border-0 shadow-none' aria-controls="responsive-navbar-nav" >
-                        <span className={`${classes['navbar-icon-bars']} `}></span>
-                        <span className={`${classes['navbar-icon-bars']} `}></span>
+                        <span className={`${classes['navbar-icon-bars']} bg-dark`}></span>
+                        <span className={`${classes['navbar-icon-bars']} bg-dark`}></span>
                     </Navbar.Toggle>
                     <Navbar.Collapse id="responsive-navbar-nav" className="justify-content-end">
                         <Nav>

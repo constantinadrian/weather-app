@@ -1,3 +1,22 @@
+:root {
+    /* colors */
+    --wa-color-primary: #212529;
+    --wa-desaturated-blue: #f4f7f970;
+    --wa-strong-pink: #bf1650;
+
+    /* gradient background */
+    --wa-primary-bg: #abe9cd;
+    --wa-primary-gradient: linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%);
+    --wa-secondary-bg: #0cbaba;
+    --wa-secondary-gradient: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
+
+    /* background color */
+    --wa-background-primary: rgb(248,249,250);
+
+    /* radius */
+    --wa-border-radius-20: 20px;
+}
+
 * {
     box-sizing: border-box;
 }

@@ -1,7 +1,6 @@
 .header-bg {
-    background: #212529;
+    background: var(--wa-background-primary);
 }
-
 .navbar-icon-bars {
     width: 2rem;
     height: 2px;

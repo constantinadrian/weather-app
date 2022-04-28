@@ -1,0 +1,11 @@
+.bg-weather-night {
+    background-color: var(--wa-primary-bg);
+    background-image: var(--wa-primary-gradient);
+}
+
+.col-weather {
+    max-width: 474px !important;
+    width: 100%;
+    margin: 0 auto;
+    min-height: 60vh;
+}
