@@ -1,8 +1,15 @@
 import React from "react";
+import Main from "../components/Layout/Main";
+import CardWrapper from "../components/Layout/CardWrapper";
+
 
 const WeatherSettings = () => {
     return (
-        <p>WeatherSettings Page</p>
+        <Main>
+            <CardWrapper>
+                <p>WeatherSettings Page</p>
+            </CardWrapper>
+        </Main>
     )
 }
 

@@ -1,0 +1,15 @@
+.card-header {
+    border-bottom-left-radius: 70% !important;
+    border-bottom-right-radius: 70% !important;
+}
+
+.card-weather-icon {
+    position: absolute;
+    width: 120px !important;
+    -webkit-filter: drop-shadow(0 0 4px white);
+    filter: drop-shadow(0 0 4px white);
+}
+
+.weather-contry {
+    font-size: 12px;
+}

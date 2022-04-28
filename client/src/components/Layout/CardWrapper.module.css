@@ -1,0 +1,6 @@
+.card {
+    color: var(--wa-color-primary);
+    background-color: var(--wa-desaturated-blue) !important;
+    border-radius: var(--wa-border-radius-20) !important;
+    overflow: hidden;
+}

@@ -102,8 +102,6 @@ const WeatherSearchForm = ({ setCityLocation, setCitySearchLocation, setWeatherD
         setValue("city", "");
     };
 
-    console.log('hourly_forecast', props.hourly_forecast)
-
     return (
         <>
             <Form onSubmit={handleSubmit(onSubmitHandler)}>
