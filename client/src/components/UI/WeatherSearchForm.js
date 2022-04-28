@@ -7,13 +7,14 @@ import classes from "./WeatherSearchForm.module.css";
 
 import { connect } from "react-redux";
 import useHttp from "../../hooks/useHttp";
-import { setLocation, setSearchLocation, setWeather } from "../../store/Weather/weatherActions";
+import { setLocation, setSearchLocation, setWeather, setHourlyForecast } from "../../store/Weather/weatherActions";
+import getHoursForecast from "../../helpers/getHoursForecast";
 
 import { useForm, Controller } from "react-hook-form"; // react-hook-form
 import useDebounce from "../../hooks/useDebounce";
 
 
-const WeatherSearchForm = ({ setCityLocation, setCitySearchLocation, setWeatherData, ...props }) => {
+const WeatherSearchForm = ({ setCityLocation, setCitySearchLocation, setWeatherData, setHourlyForecastData, ...props } ) => {
     // react-hook-form
     const {
         control,
@@ -26,8 +27,8 @@ const WeatherSearchForm = ({ setCityLocation, setCitySearchLocation, setWeatherD
             city: "",
         },
     });
-    
-    const { isLoading, error, sendRequest } = useHttp();
+
+    const { error, sendRequest } = useHttp();
 
     const fetchWeatherData = useCallback(
         (location) => {
@@ -46,12 +47,18 @@ const WeatherSearchForm = ({ setCityLocation, setCitySearchLocation, setWeatherD
 
             const loadWeatherData = (data) => {
                 setWeatherData(data);
+                const hourlyForecast = getHoursForecast(
+                    data.forecast.forecastday[0].hour,
+                    data.forecast.forecastday[1].hour,
+                    data.location.localtime
+                );
+                setHourlyForecastData(hourlyForecast);
                 setCitySearchLocation(location);
             };
 
             sendRequest(requestConfig, loadWeatherData);
         },
-        [sendRequest, setCitySearchLocation, setWeatherData, props.csrf_token]
+        [sendRequest, setCitySearchLocation, setWeatherData, setHourlyForecastData, props.csrf_token]
     );
 
     useEffect(() => {
@@ -95,9 +102,7 @@ const WeatherSearchForm = ({ setCityLocation, setCitySearchLocation, setWeatherD
         setValue("city", "");
     };
 
-    console.log('location', props.location)
-    console.log('search_location', props.search_location)
-    console.log('response_location', props.response_location)
+    console.log('hourly_forecast', props.hourly_forecast)
 
     return (
         <>
@@ -177,7 +182,6 @@ const WeatherSearchForm = ({ setCityLocation, setCitySearchLocation, setWeatherD
                     )}
                 </Form.Group>
             </Form>
-            {isLoading && <p>Loading...</p>}
         </>
     );
 };
@@ -186,6 +190,7 @@ const mapStateToProps = (state) => ({
     location: state.weather.location,
     search_location: state.weather.search_location,
     response_location: state.weather.response_location,
+    hourly_forecast: state.weather.hourly_forecast,
 
     csrf_token: state.csrf.csrf_token,
 });
@@ -201,6 +206,10 @@ const mapDispatchToProps = (dispatch) => ({
 
     setWeatherData: (data) => {
         dispatch(setWeather(data));
+    },
+
+    setHourlyForecastData: (data) => {
+        dispatch(setHourlyForecast(data));
     },
 });
 
