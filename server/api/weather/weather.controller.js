@@ -5,7 +5,7 @@ const weatherRequest = async (req, res, next) => {
         
         return new Promise ( async (resolve, reject) => {
             try {
-                const url = encodeURI(`http://api.weatherapi.com/v1/forecast.json?key=${process.env.WEATHER_API_KEY}&q=oslo&days=3`);
+                const url = encodeURI(`http://api.weatherapi.com/v1/forecast.json?key=${process.env.WEATHER_API_KEY}&q=${req.body['city']}&days=3`);
                 const response = await axios(url)
                 const data = response;
                 resolve(data)

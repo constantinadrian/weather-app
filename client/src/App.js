@@ -13,12 +13,11 @@ const WelcomePage = lazy(() => import("./Pages/WelcomePage"));
 const Layout = lazy(() => import("./components/Layout/Layout"));
 
 function App() {
-    
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getCsrfToken())
-    }, [dispatch])
+        dispatch(getCsrfToken());
+    }, [dispatch]);
 
     return (
         <Routes>
@@ -32,7 +31,11 @@ function App() {
             />
             <Route
                 path="/weather"
-                element={<Layout />}
+                element={
+                    <Suspense fallback={<Spinner />}>
+                        <Layout />
+                    </Suspense>
+                }
             >
                 <Route index element={<Weather />} />
                 <Route path="favorite-cities" element={<FavoriteCities />} />

@@ -1,8 +1,10 @@
-import { combineReducers } from 'redux'
-import csrfReducer from './CsrfToken/csrfReducer';
+import { combineReducers } from "redux";
+import csrfReducer from "./CsrfToken/csrfReducer";
+import weatherReducer from "./Weather/weatherReducer";
 
 const rootReducer = combineReducers({
-  csrf: csrfReducer,
+    weather: weatherReducer,
+    csrf: csrfReducer,
 });
 
 export default rootReducer;
