@@ -1,24 +1,35 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import ToggleButtonGroup from "react-bootstrap/ToggleButtonGroup";
 import ToggleButton from "react-bootstrap/ToggleButton";
+import { connect } from "react-redux";
+import { changeForecastScale } from "../../store/WeatherSettings/weatherSettingsActions";
+
 
 import classes from "./ToggleButtonForecast.module.css";
 import useBtnBackgroundSliding from "../../hooks/useBtnBackgroundSliding";
 
-const ToggleButtonForecast = () => {
-    const [value, setValue] = useState("hours");
+const ToggleButtonForecast = ({setForecastScale, ...props}) => {
+    const [value, setValue] = useState(props.forecast_scale);
     const {leftSide, backgroundWidth, btnRef_1, btnRef_2, toggleWidth} =
         useBtnBackgroundSliding();
 
-    const togRef = useRef(null);
+    // get the forecast scale from localStorage if any
+    useEffect(() => {
+        if (localStorage.getItem("forecastScale")) {
+            setForecastScale(localStorage.getItem("forecastScale"));
+        }
+    }, [setForecastScale]);
 
+    // set the background to forecast scale
     useEffect(() => {
         toggleWidth(value);
     }, [toggleWidth, value]);
 
-
+    // set the forecast scale on change
     const handleChange = (val) => {
         setValue(val);
+        setForecastScale(val);
+        localStorage.setItem("forecastScale", val);
     };
 
     return (
@@ -28,7 +39,6 @@ const ToggleButtonForecast = () => {
                 type="radio"
                 name="forecast"
                 value={value}
-                ref={togRef}
                 onChange={handleChange}
             >
                 <ToggleButton
@@ -62,4 +72,15 @@ const ToggleButtonForecast = () => {
     );
 };
 
-export default ToggleButtonForecast;
+
+const mapStateToProps = (state) => ({
+    forecast_scale: state.weatherSettings.forecast_scale,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+    setForecastScale: (data) => {
+        dispatch(changeForecastScale(data));
+    },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ToggleButtonForecast);
