@@ -3,6 +3,14 @@
     --wa-color-primary: #212529;
     --wa-desaturated-blue: #f4f7f970;
     --wa-strong-pink: #bf1650;
+    --wa-vivid-sky-blue: #43c6f3;
+    --wa-hunter-green: #41573d;
+    --wa-russian-green: #658761;
+    --wa-cultured: #f8f9fa;
+    --wa-mikado-yellow: #fec30f;
+
+    /* rbg colors */
+    --wa-russian-green-rbg: rgb(65, 87, 61);
 
     /* gradient background */
     --wa-primary-bg: #abe9cd;
@@ -55,6 +63,6 @@ body {
 
 .logo-link,
 .logo-link:hover {
-    color: #43c6f3;
+    color: var(--wa-vivid-sky-blue);
     text-decoration: none;
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { DispatchThemeContext } from "../../context/ThemeContext";
 import { StateThemeContext } from "../../context/ThemeContext";
+import { SET_LIGHT_THEME, SET_DARK_THEME } from "../../context/ThemeActionTypes";
 import classes from './DarkMode.module.css';
 
 const DarkMode = (props) => {
@@ -11,10 +12,10 @@ const DarkMode = (props) => {
 
     const inputOnChangeHandler = (event) => {
         if (event.target.checked) {
-            dispachTheme({type: 'SET_DARK_THEME', theme: 'dark'});
+            dispachTheme({type: SET_DARK_THEME, theme: 'dark'});
             localStorage.setItem("theme", "dark");
         } else {
-            dispachTheme({type: 'SET_LIGHT_THEME', theme: 'light'});
+            dispachTheme({type: SET_LIGHT_THEME, theme: 'light'});
             localStorage.setItem("theme", "light");
         }
         setChecked(event.target.checked)
