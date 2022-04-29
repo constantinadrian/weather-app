@@ -13,8 +13,35 @@
     /* background color */
     --wa-background-primary: rgb(248,249,250);
 
+    /* svg */
+    --wa-background-sun-moon: url("./assets/image/sun.svg");
+
+    /* translate */
+    --wa-dark-mode-ball-tx: translateX(0px);
+
     /* radius */
     --wa-border-radius-20: 20px;
+}
+
+[data-theme="dark"] {
+    /* colors */
+    --wa-color-primary: rgb(248,249,250);
+    --wa-desaturated-blue: #567c98b3;
+
+    /* gradient background */
+    --wa-primary-bg: #0cbaba;
+    --wa-primary-gradient: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
+    --wa-secondary-bg: #abe9cd;
+    --wa-secondary-gradient: linear-gradient(315deg, #abe9cd 0%, #3eadcf 74%);
+
+    /* background color */
+    --wa-background-primary: rgb(3,37,65);
+
+    /* svg */
+    --wa-background-sun-moon: url("./assets/image/moon.svg");
+
+    /* translate */
+    --wa-dark-mode-ball-tx: translateX(23px);
 }
 
 * {

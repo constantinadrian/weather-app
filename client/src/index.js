@@ -5,6 +5,7 @@ import store from './store/index';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
 import App from "./App";
+import ThemeContextProvider from "./context/ThemeContext";
 
 // Importing the Bootstrap CSS
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -14,11 +15,13 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <React.StrictMode>
         <Provider store={store}>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/*" element={<App />} />
-                </Routes>
-            </BrowserRouter>
+            <ThemeContextProvider>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/*" element={<App />} />
+                    </Routes>
+                </BrowserRouter>
+            </ThemeContextProvider>
         </Provider>
     </React.StrictMode>
 );

@@ -105,7 +105,7 @@ const WeatherSearchForm = ({ setCityLocation, setCitySearchLocation, setWeatherD
     return (
         <>
             <Form onSubmit={handleSubmit(onSubmitHandler)}>
-                <Form.Group className="mb-3" controlId="formBasicEmail">
+                <Form.Group className="mb-3" controlId="formBasic">
                     <InputGroup className="mb-3">
                         <Controller
                             name="city"
