@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Card from "react-bootstrap/Card";
-
+import ToggleButtonForecast from "./ToggleButtonForecast";
 import classes from "./WeatherCard.module.css";
 
 import CardWrapper from "../Layout/CardWrapper";
@@ -32,13 +32,24 @@ const WeatherCard = (props) => {
                         <Card.Title className="pb-5">
                             {props.temp_c}°
                         </Card.Title>
-                        <div className="d-flex justify-content-center align-items-center flex-wrap">
+                        <div className="d-flex justify-content-between align-items-center flex-wrap">
+                            <ToggleButtonForecast />
                             <Card.Text>
                                 {props.maxtemp_c}° {props.mintemp_c}°
                             </Card.Text>
                         </div>
                     </Card.Body>
-                    <Card.Footer className="text-muted">Powered by <a href="https://www.weatherapi.com/" title="Free Weather API" target="_blank" rel="noopener noreferrer">WeatherAPI.com</a></Card.Footer>
+                    <Card.Footer className="text-muted">
+                        Powered by{" "}
+                        <a
+                            href="https://www.weatherapi.com/"
+                            title="Free Weather API"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            WeatherAPI.com
+                        </a>
+                    </Card.Footer>
                 </CardWrapper>
             </>
         );

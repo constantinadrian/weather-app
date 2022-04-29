@@ -1,0 +1,24 @@
+.btn-active {
+    position: absolute;
+    background-color: var(--wa-primary-bg);
+    background-image: var(--wa-primary-gradient);
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: left 0.45s ease;
+    transition: left 0.45s ease;
+    z-index: 0;
+    border-radius: 25px !important;
+}
+
+.btn-label {
+    color: var(--wa-color-primary) !important;
+    padding: 0 15px !important;
+    z-index: 2;
+}
+
+.weather-z-index {
+    z-index: 2;
+    border-radius: 25px !important;
+}
