@@ -4,7 +4,7 @@ import classes from './CardWrapper.module.css';
 
 const CardWrapper = (props) => {
     return (
-        <Card className={`${classes.card} text-center`}>
+        <Card className={`${classes.card} text-center ${props.className ? props.className : ''}`}>
             {props.children}
         </Card>
     );

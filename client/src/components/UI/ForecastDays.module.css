@@ -1,0 +1,19 @@
+.card-forecast-days {
+    max-width: 120px !important;
+    width: 100%;
+    background-color: transparent !important;
+    border: none !important;;
+}
+
+.card-forecast-percentage {
+    position: absolute;
+    color: var(--wa-blue-de-france);
+    top: -20px;
+}
+
+.card-forecast-icon {
+    position: absolute;
+    width: 33px !important;
+    -webkit-filter: drop-shadow(0 0 2px white);
+    filter: drop-shadow(0 0 2px white);
+}

@@ -111,11 +111,16 @@ const weatherReducer = (state = initialState, action) => {
                     (day) => {
                         return {
                             date: day.date,
-                            temp_c: day.day.avgtemp_c.toFixed(),
-                            temp_f: day.day.avgtemp_f.toFixed(),
+                            temp_c: day.day.maxtemp_c.toFixed(),
+                            temp_f: day.day.maxtemp_f.toFixed(),
                             code: day.day.condition.code,
                             condition: day.day.condition.text,
                             icon: day.day.condition.icon,
+                            is_day: "1",
+                            daily_will_it_rain:	day.day.daily_will_it_rain,
+                            daily_chance_of_rain: day.day.daily_chance_of_rain,
+                            daily_will_it_snow: day.day.daily_will_it_snow,
+                            daily_chance_of_snow: day.day.daily_chance_of_snow,
                         };
                     }
                 ),

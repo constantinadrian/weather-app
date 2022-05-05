@@ -7,14 +7,24 @@ import classes from "./WeatherSearchForm.module.css";
 
 import { connect } from "react-redux";
 import useHttp from "../../hooks/useHttp";
-import { setLocation, setSearchLocation, setWeather, setHourlyForecast } from "../../store/Weather/weatherActions";
+import {
+    setLocation,
+    setSearchLocation,
+    setWeather,
+    setHourlyForecast,
+} from "../../store/Weather/weatherActions";
 import getHoursForecast from "../../helpers/getHoursForecast";
 
 import { useForm, Controller } from "react-hook-form"; // react-hook-form
 import useDebounce from "../../hooks/useDebounce";
 
-
-const WeatherSearchForm = ({ setCityLocation, setCitySearchLocation, setWeatherData, setHourlyForecastData, ...props } ) => {
+const WeatherSearchForm = ({
+    setCityLocation,
+    setCitySearchLocation,
+    setWeatherData,
+    setHourlyForecastData,
+    ...props
+}) => {
     // react-hook-form
     const {
         control,
@@ -32,7 +42,6 @@ const WeatherSearchForm = ({ setCityLocation, setCitySearchLocation, setWeatherD
 
     const fetchWeatherData = useCallback(
         (location) => {
-
             const requestConfig = {
                 url: "/api/weather-forecast",
                 credentials: "include",
@@ -58,7 +67,13 @@ const WeatherSearchForm = ({ setCityLocation, setCitySearchLocation, setWeatherD
 
             sendRequest(requestConfig, loadWeatherData);
         },
-        [sendRequest, setCitySearchLocation, setWeatherData, setHourlyForecastData, props.csrf_token]
+        [
+            sendRequest,
+            setCitySearchLocation,
+            setWeatherData,
+            setHourlyForecastData,
+            props.csrf_token,
+        ]
     );
 
     useEffect(() => {
@@ -71,7 +86,7 @@ const WeatherSearchForm = ({ setCityLocation, setCitySearchLocation, setWeatherD
 
     // run useEffect to fetch data when location has change/updated
     useEffect(() => {
-        if (debouncedLocation && debouncedLocation !== props.search_location ) {
+        if (debouncedLocation && debouncedLocation !== props.search_location) {
             fetchWeatherData(debouncedLocation);
         }
     }, [fetchWeatherData, debouncedLocation, props.search_location]);
@@ -89,7 +104,7 @@ const WeatherSearchForm = ({ setCityLocation, setCitySearchLocation, setWeatherD
             // set the hook-form error manualy with the error comming from the server
             setError("city", { type: "custom", message: error });
 
-            // here we reset the location in case the SAME TYPO 
+            // here we reset the location in case the SAME TYPO
             // it's send to backend in order to reshow the error again
             // otherwise no error will be display making the user confused
             setCityLocation("");
@@ -189,6 +204,7 @@ const mapStateToProps = (state) => ({
     search_location: state.weather.search_location,
     response_location: state.weather.response_location,
     hourly_forecast: state.weather.hourly_forecast,
+    days_forecast: state.weather.days_forecast,
 
     csrf_token: state.csrf.csrf_token,
 });

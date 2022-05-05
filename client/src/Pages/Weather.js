@@ -6,8 +6,8 @@ import WeatherSearchForm from "../components/UI/WeatherSearchForm";
 const Weather = () => {
     return (
         <Main>
-            <WeatherSearchForm/>
-            <WeatherCard/>
+            <WeatherSearchForm />
+            <WeatherCard />
         </Main>
     );
 };

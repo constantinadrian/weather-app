@@ -5,6 +5,7 @@ import ToggleButtonForecast from "./ToggleButtonForecast";
 import classes from "./WeatherCard.module.css";
 
 import CardWrapper from "../Layout/CardWrapper";
+import ForecastDays from "./ForecastDays";
 
 const WeatherCard = (props) => {
     if (props.response_location) {
@@ -13,9 +14,9 @@ const WeatherCard = (props) => {
                 <CardWrapper>
                     <Card.Header className={`${classes["card-header"]}`}>
                         <div className="pb-3">
-                            <div className="my-1">
+                            <Card.Title className="my-1">
                                 {props.response_location}
-                            </div>
+                            </Card.Title>
                             <div className={`${classes["weather-contry"]}`}>
                                 {props.country}
                             </div>
@@ -39,6 +40,8 @@ const WeatherCard = (props) => {
                             </Card.Text>
                         </div>
                     </Card.Body>
+                    <ForecastDays />
+
                     <Card.Footer className="text-muted">
                         Powered by{" "}
                         <a
