@@ -9,7 +9,7 @@ import classes from "./ToggleButtonForecast.module.css";
 import useBtnBackgroundSliding from "../../hooks/useBtnBackgroundSliding";
 
 const ToggleButtonForecast = ({setForecastScale, ...props}) => {
-    const [value, setValue] = useState(props.forecast_scale);
+    const [value, setValue] = useState(localStorage.getItem("forecastScale") ? localStorage.getItem("forecastScale") : props.forecast_scale);
     const {leftSide, backgroundWidth, btnRef_1, btnRef_2, toggleWidth} =
         useBtnBackgroundSliding();
 
