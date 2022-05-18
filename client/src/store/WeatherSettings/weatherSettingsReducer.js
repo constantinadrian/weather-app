@@ -3,13 +3,17 @@ import {
     CHANGE_TEMP_SCALE,
     CHANGE_METRIC_SCALE,
     CHANGE_PRESSURE_SCALE,
+    CELSIUS,
+    HOURS,
+    KM,
+    MILLIBARS,
 } from "./weatherSettingsActionTypes";
 
 const initialState = {
-    forecast_scale: "hours",
-    temp_scale: "celsius",
-    metric_scale: "km",
-    pressure_scale: "hPa",
+    forecast_scale: HOURS,
+    temp_scale: CELSIUS,
+    metric_scale: KM,
+    pressure_scale: MILLIBARS,
 };
 
 const weatherSettingsReducer = (state = initialState, action) => {

@@ -12,10 +12,12 @@ export const setWeather = (response) => ({type: SET_WEATHER, payload: response})
 export const setHourlyForecast = (response) => ({
     type: SET_HOURLY_FORECAST, payload: response.map((hour) => {
         return {
-            temp_c: hour.temp_c,
-            temp_f: hour.temp_f,
+            temp_c: hour.temp_c.toFixed(),
+            temp_f: hour.temp_f.toFixed(),
             hour: hour.time,
             is_day: hour.is_day,
+            text: hour.condition.text,
+            icon: hour.condition.icon,
             code: hour.condition.code,
             will_it_rain: hour.will_it_rain,
             chance_of_rain: hour.chance_of_rain,

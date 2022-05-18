@@ -2,11 +2,12 @@ import React, { useState, useRef, useLayoutEffect } from "react";
 import Card from "react-bootstrap/Card";
 
 import CardWrapper from "../Layout/CardWrapper";
-import classes from "./ForecastDays.module.css";
+import classes from "./ForecastSwiper.module.css";
 import { connect } from "react-redux";
 import { motion } from "framer-motion";
 
 import dayjs from "dayjs";
+import { CELSIUS, DAYS, HOURS } from "../../store/WeatherSettings/weatherSettingsActionTypes";
 
 // turn component into a motion component
 const MotionCardWrapper = motion(CardWrapper);
@@ -14,8 +15,8 @@ const MotionCardBody = motion(Card.Body);
 const MotionCardText = motion(Card.Text);
 const MotionCardImg = motion(Card.Img);
 
-const ForecastDays = (props) => {
-    const carouselRef = useRef(null);
+const ForecastSwiper = (props) => {
+    const swiperRef = useRef(null);
     const constraintRef = useRef(null);
     const [constraintStyle, setConstraintStyle] = useState({
         position: "absolute",
@@ -26,8 +27,8 @@ const ForecastDays = (props) => {
     // change dynamic constraints when window resize
     useLayoutEffect(() => {
         const calcConstraint = () => {
-            const offsetWidth = carouselRef?.current?.offsetWidth;
-            const scrollWidth = carouselRef?.current?.scrollWidth;
+            const offsetWidth = swiperRef?.current?.offsetWidth;
+            const scrollWidth = swiperRef?.current?.scrollWidth;
 
             let left = offsetWidth - scrollWidth;
             let width = offsetWidth + (scrollWidth - offsetWidth);
@@ -51,49 +52,67 @@ const ForecastDays = (props) => {
         return () => window.removeEventListener("resize", calcConstraint);
     }, []);
 
-    // // carousel forecast days
+    const forecastCardWrapperClasses =
+        props.forecast_scale === HOURS
+            ? `${classes["card-forecast-hours"]}`
+            : `${classes["card-forecast-days"]}`;
+
+    // swiper for forecast hours and days
     return (
         <>
             <motion.div
                 whileTap={{ cursor: "grabbing" }}
-                className={`${classes["card-forecast-carousel"]} overflow-hidden`}
+                className={`${classes["card-forecast-swiper"]} overflow-hidden`}
             >
                 <motion.div
                     drag="x"
-                    ref={carouselRef}
+                    ref={swiperRef}
                     dragConstraints={constraintRef}
                     className="d-flex position-relative justify-content-between pb-3"
                 >
-                    {props.days_forecast.map((day, idx) => (
+                    {props.forecast_weather.map((forecast, idx) => (
                         <MotionCardWrapper
                             key={idx}
-                            className={`${classes["card-forecast-days"]} d-flex flex-row mx-3`}
+                            className={`${forecastCardWrapperClasses} d-flex flex-row mx-3`}
                         >
                             <motion.div className="position-relative d-flex flex-column justify-content-center align-items-center h-100 w-100">
                                 <MotionCardBody className="pb-3 d-flex flex-column align-items-stretch h-100">
-                                    <MotionCardText>
-                                        {idx === 0
-                                            ? "Today"
-                                            : dayjs(day.date).format("dddd")}
-                                    </MotionCardText>
+                                    {props.forecast_scale === HOURS && (
+                                        <MotionCardText>
+                                            {idx === 0
+                                                ? "Now"
+                                                : dayjs(forecast.hour).format(
+                                                      "HH"
+                                                  )}
+                                        </MotionCardText>
+                                    )}
+                                    {props.forecast_scale === DAYS && (
+                                        <MotionCardText>
+                                            {idx === 0
+                                                ? "Today"
+                                                : dayjs(forecast.date).format(
+                                                      "dddd"
+                                                  )}
+                                        </MotionCardText>
+                                    )}
                                 </MotionCardBody>
 
                                 <motion.div className="d-flex justify-content-center align-items-center position-relative">
-                                    {!!day.daily_will_it_snow && (
+                                    {!!forecast.will_it_snow && (
                                         <MotionCardText
                                             className={`${classes["card-forecast-percentage"]}`}
                                         >
-                                            {day.daily_chance_of_snow}
+                                            {forecast.chance_of_snow}
                                             <small>%</small>
                                         </MotionCardText>
                                     )}
 
-                                    {!!!day.daily_will_it_snow &&
-                                        !!day.daily_will_it_rain && (
+                                    {!!!forecast.will_it_snow &&
+                                        !!forecast.will_it_rain && (
                                             <MotionCardText
                                                 className={`${classes["card-forecast-percentage"]}`}
                                             >
-                                                {day.daily_chance_of_rain}
+                                                {forecast.chance_of_rain}
                                                 <small>%</small>
                                             </MotionCardText>
                                         )}
@@ -102,12 +121,12 @@ const ForecastDays = (props) => {
                                 <MotionCardText className="d-flex justify-content-center align-items-center position-relative p-3">
                                     <MotionCardImg
                                         className={`${classes["card-forecast-icon"]}`}
-                                        src={day.icon}
+                                        src={forecast.icon}
                                     />
                                 </MotionCardText>
 
                                 <MotionCardText className="pb-3">
-                                    {day.temp_c}°
+                                    {props.temp_scale === CELSIUS ? forecast.temp_c : forecast.temp_f}°
                                 </MotionCardText>
                             </motion.div>
                         </MotionCardWrapper>
@@ -120,11 +139,10 @@ const ForecastDays = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-    hourly_forecast: state.weather.hourly_forecast,
-    days_forecast: state.weather.days_forecast,
     temp_scale: state.weatherSettings.temp_scale,
+    forecast_scale: state.weatherSettings.forecast_scale,
 });
 
 const mapDispatchToProps = (dispatch) => ({});
 
-export default connect(mapStateToProps, mapDispatchToProps)(ForecastDays);
+export default connect(mapStateToProps, mapDispatchToProps)(ForecastSwiper);

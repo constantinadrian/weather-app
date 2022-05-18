@@ -7,6 +7,7 @@ import { changeForecastScale } from "../../store/WeatherSettings/weatherSettings
 
 import classes from "./ToggleButtonForecast.module.css";
 import useBtnBackgroundSliding from "../../hooks/useBtnBackgroundSliding";
+import { HOURS, DAYS } from "../../store/WeatherSettings/weatherSettingsActionTypes";
 
 const ToggleButtonForecast = ({setForecastScale, ...props}) => {
     const [value, setValue] = useState(localStorage.getItem("forecastScale") ? localStorage.getItem("forecastScale") : props.forecast_scale);
@@ -46,7 +47,7 @@ const ToggleButtonForecast = ({setForecastScale, ...props}) => {
                     ref={btnRef_1}
                     className={`bg-transparent ${classes["btn-label"]} shadow-none border-0`}
                     name="radio"
-                    value={"hours"}
+                    value={HOURS}
                 >
                     Hours
                 </ToggleButton>
@@ -55,7 +56,7 @@ const ToggleButtonForecast = ({setForecastScale, ...props}) => {
                     ref={btnRef_2}
                     className={`bg-transparent ${classes["btn-label"]} shadow-none border-0`}
                     name="radio"
-                    value={"days"}
+                    value={DAYS}
                 >
                     Days
                 </ToggleButton>

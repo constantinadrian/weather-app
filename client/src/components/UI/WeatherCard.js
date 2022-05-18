@@ -5,7 +5,8 @@ import ToggleButtonForecast from "./ToggleButtonForecast";
 import classes from "./WeatherCard.module.css";
 
 import CardWrapper from "../Layout/CardWrapper";
-import ForecastDays from "./ForecastDays";
+import ForecastWeather from "./ForecastWeather";
+import { CELSIUS, FAHRENHEIT } from "../../store/WeatherSettings/weatherSettingsActionTypes";
 
 const WeatherCard = (props) => {
     if (props.response_location) {
@@ -31,16 +32,22 @@ const WeatherCard = (props) => {
                     </div>
                     <Card.Body className="mt-5">
                         <Card.Title className="pb-5">
-                            {props.temp_c}°
+                            {props.temp_scale === CELSIUS
+                                ? props.temp_c
+                                : props.temp_f}
+                            °
                         </Card.Title>
                         <div className="d-flex justify-content-between align-items-center flex-wrap">
                             <ToggleButtonForecast />
-                            <Card.Text>
+                            {props.temp_scale === CELSIUS && <Card.Text>
                                 {props.maxtemp_c}° {props.mintemp_c}°
-                            </Card.Text>
+                            </Card.Text>}
+                            {props.temp_scale === FAHRENHEIT && <Card.Text>
+                                {props.maxtemp_f}° {props.mintemp_f}°
+                            </Card.Text>}
                         </div>
                     </Card.Body>
-                    <ForecastDays />
+                    <ForecastWeather />
 
                     <Card.Footer className="text-muted">
                         Powered by{" "}
@@ -75,7 +82,7 @@ const mapStateToProps = (state) => ({
     mintemp_c: state.weather.mintemp_c,
     mintemp_f: state.weather.mintemp_f,
 
-    hourly_forecast: state.weather.hourly_forecast,
+    temp_scale: state.weatherSettings.temp_scale,
 });
 
 export default connect(mapStateToProps)(WeatherCard);

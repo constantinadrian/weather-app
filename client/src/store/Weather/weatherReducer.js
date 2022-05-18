@@ -117,10 +117,10 @@ const weatherReducer = (state = initialState, action) => {
                             condition: day.day.condition.text,
                             icon: day.day.condition.icon,
                             is_day: "1",
-                            daily_will_it_rain:	day.day.daily_will_it_rain,
-                            daily_chance_of_rain: day.day.daily_chance_of_rain,
-                            daily_will_it_snow: day.day.daily_will_it_snow,
-                            daily_chance_of_snow: day.day.daily_chance_of_snow,
+                            will_it_rain:	day.day.daily_will_it_rain,
+                            chance_of_rain: day.day.daily_chance_of_rain,
+                            will_it_snow: day.day.daily_will_it_snow,
+                            chance_of_snow: day.day.daily_chance_of_snow,
                         };
                     }
                 ),

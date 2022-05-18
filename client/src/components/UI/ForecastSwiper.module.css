@@ -1,10 +1,17 @@
-.card-forecast-carousel {
+.card-forecast-swiper {
     cursor: grab;
     width: 100%;
 }
 
 .card-forecast-days {
-    min-width: 110px !important;
+    min-width: 117.333px !important;
+    width: 100%;
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.card-forecast-hours {
+    min-width: 65px !important;
     width: 100%;
     background-color: transparent !important;
     border: none !important;
