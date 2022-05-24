@@ -25,7 +25,7 @@ const Header = (props) => {
                                 className="d-inline-block"
                                 alt="Cloud Logo"
                             />{" "}
-                            <span className="d-none d-sm-inline"> Weather App</span>
+                            <span className="d-none d-sm-inline"> AC Weather</span>
                         </Link>
                     </Navbar.Brand>
                     <Navbar.Toggle className='border-0 shadow-none' aria-controls="responsive-navbar-nav" >

@@ -4,4 +4,15 @@
     right: 0;
     left: 0;
     bottom: 0;
+    background: var(--wa-rich-black-fogra);
+}
+
+.welcome-text {
+    color: var(--wa-vivid-sky-blue) !important;
+    font-weight: 600;
+}
+
+.attribution {
+    font-size: 12px !important;
+    font-weight: 100;
 }
