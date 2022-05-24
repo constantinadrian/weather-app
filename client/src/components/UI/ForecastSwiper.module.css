@@ -21,6 +21,7 @@
     position: absolute;
     color: var(--wa-blue-de-france);
     top: -20px;
+    font-size: 12px;
 }
 
 .card-forecast-icon {
