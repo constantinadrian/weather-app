@@ -7,6 +7,7 @@ import classes from "./WeatherCard.module.css";
 import CardWrapper from "../Layout/CardWrapper";
 import ForecastWeather from "./ForecastWeather";
 import { CELSIUS, FAHRENHEIT } from "../../store/WeatherSettings/weatherSettingsActionTypes";
+import CurrentWeatherDetails from "./CurrentWeatherDetails";
 
 const WeatherCard = (props) => {
     if (props.response_location) {
@@ -48,6 +49,7 @@ const WeatherCard = (props) => {
                         </div>
                     </Card.Body>
                     <ForecastWeather />
+                    <CurrentWeatherDetails />
 
                     <Card.Footer className="text-muted">
                         Powered by{" "}
