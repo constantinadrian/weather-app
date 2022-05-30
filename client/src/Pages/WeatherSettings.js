@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { motion } from "framer-motion";
 
 import Card from "react-bootstrap/Card";
 import Main from "../components/Layout/Main";
@@ -19,6 +20,9 @@ import {
     changeMetricScale,
     changePressureScale,
 } from "../store/WeatherSettings/weatherSettingsActions";
+
+// turn component into a motion component
+const MotionCardWrapper = motion(CardWrapper);
 
 const WeatherSettings = ({
     setTempScale,
@@ -55,23 +59,48 @@ const WeatherSettings = ({
         btn_value_2: INCHES,
         btn_dispay_2: "Hg",
     };
+
+    // variants for framer-motion animation
+    const container = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.07,
+                delayChildren: 0.2,
+            },
+        },
+    };
+
+    const item = {
+        hidden: { opacity: 0 },
+        show: { opacity: 1 },
+    };
+
     return (
         <Main>
-            <CardWrapper className="px-3 py-5">
-                <Card.Title className="mb-5">Weather Settings</Card.Title>
-                <div className="d-flex justify-content-between align-items-center flex-wrap mb-3">
+            <MotionCardWrapper
+                variants={container}
+                initial="hidden"
+                animate="show"
+                className="px-3 py-5"
+            >
+                <motion.div variants={item} className="mb-5 card-title h5">
+                    Weather Settings
+                </motion.div>
+                <motion.div variants={item} className="d-flex justify-content-between align-items-center flex-wrap mb-3">
                     <Card.Text className="m-0">Temperature</Card.Text>
                     <SettingsButton {...tempSettingsProps} />
-                </div>
-                <div className="d-flex justify-content-between align-items-center flex-wrap mb-3">
+                </motion.div>
+                <motion.div variants={item} className="d-flex justify-content-between align-items-center flex-wrap mb-3">
                     <Card.Text className="m-0">Metric</Card.Text>
                     <SettingsButton {...metricSettingsProps} />
-                </div>
-                <div className="d-flex justify-content-between align-items-center flex-wrap mb-3">
+                </motion.div>
+                <motion.div variants={item} className="d-flex justify-content-between align-items-center flex-wrap mb-3">
                     <Card.Text className="m-0">Pressure</Card.Text>
                     <SettingsButton {...pressureSettingsProps} />
-                </div>
-            </CardWrapper>
+                </motion.div>
+            </MotionCardWrapper>
         </Main>
     );
 };
