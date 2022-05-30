@@ -1,23 +1,50 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
+import { motion } from "framer-motion";
 
 import Main from "../components/Layout/Main";
 import CardWrapper from "../components/Layout/CardWrapper";
 import FavoriteCityButton from "../components/UI/FavoriteCityButton";
 import { setLocation } from "../store/Weather/weatherActions";
 
-const FavoriteCities = ({setCityLocation, ...props}) => {
+// turn component into a motion component
+const MotionCardWrapper = motion(CardWrapper);
+
+const FavoriteCities = ({ setCityLocation, ...props }) => {
     const navigate = useNavigate();
+
     const onClickHandler = (data) => {
-        setCityLocation(data)
+        setCityLocation(data);
         navigate(`/weather`);
+    };
+
+    // variants for framer-motion animation
+    const container = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.07,
+                delayChildren: 0.3,
+            },
+        },
+    };
+
+    const item = {
+        hidden: { opacity: 0 },
+        show: { opacity: 1 },
     };
 
     return (
         <Main>
-            <CardWrapper className="px-3 py-5">
-                <div className="mb-5 card-title h5">Favorite Cities</div>
+            <MotionCardWrapper
+                variants={container}
+                initial="hidden"
+                animate="show"
+                className="px-3 py-5"
+            >
+                <motion.div variants={item} className="mb-5 card-title h5">Favorite Cities</motion.div>
                 {props.favorite_cities.map((favorite, idx) => (
                     <FavoriteCityButton
                         key={idx}
@@ -29,8 +56,12 @@ const FavoriteCities = ({setCityLocation, ...props}) => {
                         icon={favorite.icon}
                     />
                 ))}
-                {!props.favorite_cities.length && <p>You don't have any favorites cities yet!</p>}
-            </CardWrapper>
+                {!props.favorite_cities.length && (
+                    <motion.p variants={item}>
+                        You don't have any favorites cities yet!
+                    </motion.p>
+                )}
+            </MotionCardWrapper>
         </Main>
     );
 };
