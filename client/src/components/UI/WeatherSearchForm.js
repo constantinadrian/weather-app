@@ -76,12 +76,6 @@ const WeatherSearchForm = ({
         ]
     );
 
-    useEffect(() => {
-        if (localStorage.getItem("location")) {
-            setCityLocation(localStorage.getItem("location"));
-        }
-    }, [setCityLocation]);
-
     const debouncedLocation = useDebounce(props.location, 500);
 
     // run useEffect to fetch data when location has change/updated

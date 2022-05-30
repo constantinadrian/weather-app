@@ -1,21 +1,27 @@
 import ReactDOM from "react-dom/client";
 import React from "react";
 import { Provider } from "react-redux";
-import store from './store/index';
+import store from "./store/index";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import reportWebVitals from './reportWebVitals';
+import reportWebVitals from "./reportWebVitals";
 import App from "./App";
 import ThemeContextProvider from "./context/ThemeContext";
 import { setFavoriteCities } from "./store/FavoriteCities/favoriteCitiesActions";
+import { setLocation } from "./store/Weather/weatherActions";
 
 // Importing the Bootstrap CSS
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
-// get favorite from localStorage if any
-if (localStorage.getItem('favoriteCities')) {
-    const favoriteCities = JSON.parse(localStorage.getItem('favoriteCities'));
+// get favorite cities from localStorage if any
+if (localStorage.getItem("favoriteCities")) {
+    const favoriteCities = JSON.parse(localStorage.getItem("favoriteCities"));
     store.dispatch(setFavoriteCities(favoriteCities));
+}
+
+// get user last search location from localStorage if any
+if (localStorage.getItem("location")) {
+    store.dispatch(setLocation(localStorage.getItem("location")));
 }
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
