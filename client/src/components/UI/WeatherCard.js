@@ -11,6 +11,7 @@ import {
     FAHRENHEIT,
 } from "../../store/WeatherSettings/weatherSettingsActionTypes";
 import CurrentWeatherDetails from "./CurrentWeatherDetails";
+import AddToFavoriteButton from "./AddToFavoriteButton";
 
 const WeatherCard = (props) => {
     if (props.response_location) {
@@ -20,6 +21,7 @@ const WeatherCard = (props) => {
                     <Card.Header
                         className={`${classes["card-header"]}`}
                     >
+                        <AddToFavoriteButton />
                     </Card.Header>
 
                     <Card.Body>
