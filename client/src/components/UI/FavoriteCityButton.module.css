@@ -3,13 +3,10 @@
 }
 
 .favorite-city-weather-wrapper {
-    /* color: var(--wa-color-primary); */
     border: none !important;
 }
 
 .FavoriteCityWeatherContainer:hover .favorite-city-weather-wrapper {
-    /* color: var(--wa-cultured); */
-    /* background: var(--wa-oxford-blue) !important; */
     background-color: var(--wa-primary-bg) !important;
     background-image: var(--wa-primary-gradient) !important;
 }
