@@ -6,7 +6,10 @@ import classes from "./WeatherCard.module.css";
 
 import CardWrapper from "../Layout/CardWrapper";
 import ForecastWeather from "./ForecastWeather";
-import { CELSIUS, FAHRENHEIT } from "../../store/WeatherSettings/weatherSettingsActionTypes";
+import {
+    CELSIUS,
+    FAHRENHEIT,
+} from "../../store/WeatherSettings/weatherSettingsActionTypes";
 import CurrentWeatherDetails from "./CurrentWeatherDetails";
 
 const WeatherCard = (props) => {
@@ -14,38 +17,56 @@ const WeatherCard = (props) => {
         return (
             <>
                 <CardWrapper>
-                    <Card.Header className={`${classes["card-header"]}`}>
-                        <div className="pb-3">
-                            <Card.Title className="my-1">
-                                {props.response_location}
-                            </Card.Title>
-                            <div className={`${classes["weather-contry"]}`}>
-                                {props.country}
-                            </div>
-                        </div>
-                        <p className="weather-info pb-5">{props.condition}</p>
+                    <Card.Header
+                        className={`${classes["card-header"]}`}
+                    >
                     </Card.Header>
-                    <div className="d-flex justify-content-center align-items-center position-relative">
-                        <Card.Img
-                            className={`${classes["card-weather-icon"]}`}
-                            src={props.icon}
-                        />
-                    </div>
-                    <Card.Body className="mt-5">
-                        <Card.Title className="pb-5">
-                            {props.temp_scale === CELSIUS
-                                ? props.temp_c
-                                : props.temp_f}
-                            °
+
+                    <Card.Body>
+                        <Card.Title className="my-1">
+                            {props.response_location}
                         </Card.Title>
+                        <div className={`${classes["weather-contry"]}`}>
+                            {props.country}
+                        </div>
+
+                        <div
+                            className={`${classes["card-weather-info"]} d-flex align-items-center position-relative py-3 mb-3`}
+                        >
+                            <div
+                                className={`${classes["card-weather-info-details"]} d-flex justify-content-center align-items-center flex-wrap`}
+                            >
+                                <Card.Img
+                                    className={`${classes["card-weather-icon"]}`}
+                                    src={props.icon}
+                                />
+                                <Card.Title
+                                    className={`${classes["card-weather-temp"]}`}
+                                >
+                                    {props.temp_scale === CELSIUS
+                                        ? props.temp_c
+                                        : props.temp_f}
+                                    °
+                                </Card.Title>
+                            </div>
+
+                            <p className={`${classes["weather-condition"]}`}>
+                                {props.condition}
+                            </p>
+                        </div>
+
                         <div className="d-flex justify-content-between align-items-center flex-wrap">
                             <ToggleButtonForecast />
-                            {props.temp_scale === CELSIUS && <Card.Text>
-                                {props.maxtemp_c}° {props.mintemp_c}°
-                            </Card.Text>}
-                            {props.temp_scale === FAHRENHEIT && <Card.Text>
-                                {props.maxtemp_f}° {props.mintemp_f}°
-                            </Card.Text>}
+                            {props.temp_scale === CELSIUS && (
+                                <Card.Text>
+                                    {props.maxtemp_c}° {props.mintemp_c}°
+                                </Card.Text>
+                            )}
+                            {props.temp_scale === FAHRENHEIT && (
+                                <Card.Text>
+                                    {props.maxtemp_f}° {props.mintemp_f}°
+                                </Card.Text>
+                            )}
                         </div>
                     </Card.Body>
                     <ForecastWeather />
