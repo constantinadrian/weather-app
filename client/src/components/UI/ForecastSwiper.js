@@ -7,7 +7,11 @@ import { connect } from "react-redux";
 import { motion } from "framer-motion";
 
 import dayjs from "dayjs";
-import { CELSIUS, DAYS, HOURS } from "../../store/WeatherSettings/weatherSettingsActionTypes";
+import {
+    CELSIUS,
+    DAYS,
+    HOURS,
+} from "../../store/WeatherSettings/weatherSettingsActionTypes";
 
 // turn component into a motion component
 const MotionCardWrapper = motion(CardWrapper);
@@ -52,6 +56,23 @@ const ForecastSwiper = (props) => {
         return () => window.removeEventListener("resize", calcConstraint);
     }, []);
 
+    // variants for framer-motion animation
+    const container = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.07,
+                delayChildren: 0.2,
+            },
+        },
+    };
+
+    const item = {
+        hidden: { opacity: 0 },
+        show: { opacity: 1 },
+    };
+
     const forecastCardWrapperClasses =
         props.forecast_scale === HOURS
             ? `${classes["card-forecast-hours"]}`
@@ -63,6 +84,9 @@ const ForecastSwiper = (props) => {
             <motion.div
                 whileTap={{ cursor: "grabbing" }}
                 className={`${classes["card-forecast-swiper"]} overflow-hidden`}
+                variants={container}
+                initial="hidden"
+                animate="show"
             >
                 <motion.div
                     drag="x"
@@ -74,6 +98,7 @@ const ForecastSwiper = (props) => {
                         <MotionCardWrapper
                             key={idx}
                             className={`${forecastCardWrapperClasses} d-flex flex-row mx-3`}
+                            variants={item}
                         >
                             <motion.div className="position-relative d-flex flex-column justify-content-center align-items-center h-100 w-100">
                                 <MotionCardBody className="pb-3 d-flex flex-column align-items-stretch h-100">
@@ -126,7 +151,10 @@ const ForecastSwiper = (props) => {
                                 </MotionCardText>
 
                                 <MotionCardText className="pb-3">
-                                    {props.temp_scale === CELSIUS ? forecast.temp_c : forecast.temp_f}°
+                                    {props.temp_scale === CELSIUS
+                                        ? forecast.temp_c
+                                        : forecast.temp_f}
+                                    °
                                 </MotionCardText>
                             </motion.div>
                         </MotionCardWrapper>
