@@ -3,7 +3,6 @@ const cookieParser = require("cookie-parser"); // a middleware which parses cook
 const csrf = require("csurf"); // Use csurf middleware to protect against cross-site request forgery (CSRF)
 const cors = require("cors");
 const path = require("path");
-const axios = require('axios');
 
 // csrf route
 const csrfRoute = require('./api/csrf/csrf.routes')
