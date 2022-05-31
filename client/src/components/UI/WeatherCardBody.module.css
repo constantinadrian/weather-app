@@ -1,6 +1,5 @@
-.card-header {
-    border: none !important;
-    background: transparent !important;
+.weather-contry {
+    font-size: 12px;
 }
 
 .card-weather-info {
@@ -20,10 +19,6 @@
 
 .card-weather-temp {
     font-size: 70px !important;
-}
-
-.weather-contry {
-    font-size: 12px;
 }
 
 .weather-condition {

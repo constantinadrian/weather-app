@@ -23,6 +23,4 @@ const mapStateToProps = (state) => ({
     days_forecast: state.weather.days_forecast,
 });
 
-const mapDispatchToProps = (dispatch) => ({});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ForecastWeather);
+export default connect(mapStateToProps)(ForecastWeather);
