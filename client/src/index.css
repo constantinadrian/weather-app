@@ -22,8 +22,10 @@
 
     /* background color */
     --wa-background-primary: rgb(248,249,250);
+    --wa-background-secondary: #43b0cf;
 
     /* svg */
+    --wa-background-clouds: url("./assets/image/clouds-light.svg");
     --wa-background-sun-moon: url("./assets/image/sun.svg");
 
     /* translate */
@@ -46,8 +48,10 @@
 
     /* background color */
     --wa-background-primary: rgb(3,37,65);
+    --wa-background-secondary: rgb(3,37,65);
 
     /* svg */
+    --wa-background-clouds: url("./assets/image/clouds-dark.svg");
     --wa-background-sun-moon: url("./assets/image/moon.svg");
 
     /* translate */

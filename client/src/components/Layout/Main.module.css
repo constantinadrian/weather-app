@@ -1,4 +1,5 @@
 .bg-weather-night {
+    min-height: calc(100vh - 76px);
     background-color: var(--wa-primary-bg);
     background-image: var(--wa-primary-gradient);
 }
