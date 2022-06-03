@@ -1,13 +1,17 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import Main from "../components/Layout/Main";
-import WeatherCard from "../components/UI/WeatherCard";
+import WeatherCardPlaceholder from "../components/UI/WeatherCardPlaceholder";
 import WeatherSearchForm from "../components/UI/WeatherSearchForm";
+
+const WeatherCard = lazy(() => import("../components/UI/WeatherCard"));
 
 const Weather = () => {
     return (
         <Main>
             <WeatherSearchForm />
-            <WeatherCard />
+            <Suspense fallback={<WeatherCardPlaceholder />}>
+                <WeatherCard />
+            </Suspense>
         </Main>
     );
 };
