@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.12,
+* Autoprefixer: v10.4.4
+* Browsers: last 16 version
+*/
+
 .DarkThemeContainer {
     margin-top: 1.5rem;
 }
@@ -28,8 +35,14 @@
     background: var(--wa-cultured);
     border: 1px solid var(--wa-hunter-green);
     z-index: 2;
+    -webkit-transition: -webkit-transform 0.2s linear;
+    transition: -webkit-transform 0.2s linear;
+    -o-transition: transform 0.2s linear;
     transition: transform 0.2s linear;
-    transform: var(--wa-dark-mode-ball-tx);
+    transition: transform 0.2s linear, -webkit-transform 0.2s linear;
+    -webkit-transform: var(--wa-dark-mode-ball-tx);
+        -ms-transform: var(--wa-dark-mode-ball-tx);
+            transform: var(--wa-dark-mode-ball-tx);
 }
 
 @media (min-width: 992px) {

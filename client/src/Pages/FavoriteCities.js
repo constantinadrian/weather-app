@@ -44,7 +44,6 @@ const FavoriteCities = ({
             };
 
             const loadWeatherData = (data) => {
-                console.log("favorite city data", data);
                 updateFavoriteCityTemp(data);
             };
 

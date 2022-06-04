@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.12,
+* Autoprefixer: v10.4.4
+* Browsers: last 16 version
+*/
+
 .page-footer {
     position: relative;
     color: var(--wa-color-primary);
@@ -23,5 +30,6 @@
     right: 15px;
     background-image: var(--wa-background-sun-moon);
     background-repeat: no-repeat;
-    filter: drop-shadow(0 0 4px white);
+    -webkit-filter: drop-shadow(0 0 4px white);
+            filter: drop-shadow(0 0 4px white);
 }

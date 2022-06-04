@@ -1,6 +1,15 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.12,
+* Autoprefixer: v10.4.4
+* Browsers: last 16 version
+*/
+
 .weather-search-form {
     background-color: var(--wa-desaturated-blue) !important;
     color: var(--wa-color-primary) !important;
+    -webkit-transition: none !important;
+    -o-transition: none !important;
     transition: none !important;
 }
 
@@ -12,6 +21,22 @@
 .weather-search-form-button {
     border-bottom-right-radius: var(--wa-border-radius-20) !important;
     border-top-right-radius: var(--wa-border-radius-20) !important;
+}
+
+.weather-search-form-input::-webkit-input-placeholder {
+    color: var(--wa-color-primary) !important;
+}
+
+.weather-search-form-input::-moz-placeholder {
+    color: var(--wa-color-primary) !important;
+}
+
+.weather-search-form-input:-ms-input-placeholder {
+    color: var(--wa-color-primary) !important;
+}
+
+.weather-search-form-input::-ms-input-placeholder {
+    color: var(--wa-color-primary) !important;
 }
 
 .weather-search-form-input::placeholder {

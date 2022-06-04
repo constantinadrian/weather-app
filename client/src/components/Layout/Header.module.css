@@ -1,3 +1,10 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.12,
+* Autoprefixer: v10.4.4
+* Browsers: last 16 version
+*/
+
 .header-bg {
     background: var(--wa-background-primary);
 }
@@ -12,6 +19,8 @@
     margin-top: 1rem;
     padding-top: 0;
     padding-bottom: 0;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
 }
 
@@ -21,5 +30,4 @@
         margin-right: 1.5rem;
         padding: .5rem 0;
     }
-    
 }

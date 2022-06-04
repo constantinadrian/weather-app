@@ -1,14 +1,28 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.12,
+* Autoprefixer: v10.4.4
+* Browsers: last 16 version
+*/
+
 .weather-contry {
     font-size: 12px;
 }
 
 .card-weather-info {
-    flex-direction: column;
-    justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
 }
 
 .card-weather-info-details {
-    order: 2 !important;
+    -webkit-box-ordinal-group: 3 !important;
+        -ms-flex-order: 2 !important;
+            order: 2 !important;
 }
 
 .card-weather-icon {
@@ -23,23 +37,34 @@
 
 .weather-condition {
     padding-bottom: 1.5rem;
-    order: 1 !important;
+    -webkit-box-ordinal-group: 2 !important;
+        -ms-flex-order: 1 !important;
+            order: 1 !important;
     padding-top: 1rem;
 }
 
 @media only screen and (min-width: 479px) {
     .card-weather-info {
-        flex-direction: row;
-        justify-content: space-between;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: row;
+                flex-direction: row;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
     }
 
     .card-weather-info-details {
-        order: 1 !important;
+        -webkit-box-ordinal-group: 2 !important;
+            -ms-flex-order: 1 !important;
+                order: 1 !important;
     }
 
     .weather-condition {
         padding-bottom: 1.5rem;
-        order: 2 !important;
+        -webkit-box-ordinal-group: 3 !important;
+            -ms-flex-order: 2 !important;
+                order: 2 !important;
         padding-top: 0;
     }
 }

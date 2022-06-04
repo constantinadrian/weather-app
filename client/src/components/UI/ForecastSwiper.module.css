@@ -1,4 +1,12 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.12,
+* Autoprefixer: v10.4.4
+* Browsers: last 16 version
+*/
+
 .card-forecast-swiper {
+    cursor: -webkit-grab;
     cursor: grab;
     width: 100%;
 }
