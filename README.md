@@ -190,11 +190,11 @@ v6)
 
         Optional: if you have [Git](https://git-scm.com/) install on your machine you can type
           ```
-          git clone https://github.com/constantinadrian/savour
+          git clone https://github.com/constantinadrian/weather-app
           ```
         or to clone the repository into a different name on the folder you can run 
           ```
-          git clone https://github.com/constantinadrian/savour folder_name
+          git clone https://github.com/constantinadrian/weather-app folder_name
           ```
         more info about cloning with git [here](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository).
 
