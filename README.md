@@ -221,6 +221,12 @@ v6)
 
   - #### Code
 
+    - [https://expressjs.com/en/api.html](https://expressjs.com/en/api.html)
+
+    - [http://expressjs.com/en/resources/middleware/csurf.html](http://expressjs.com/en/resources/middleware/csurf.html)
+
+    - [https://www.npmjs.com/package/csurf](https://www.npmjs.com/package/csurf)
+
     - [https://stackoverflow.com/questions/9707021/how-do-i-auto-hide-placeholder-text-upon-focus-using-css-or-jquery](https://stackoverflow.com/questions/9707021/how-do-i-auto-hide-placeholder-text-upon-focus-using-css-or-jquery)
 
     - [https://www.framer.com/docs/](https://www.framer.com/docs/)
