@@ -71,8 +71,8 @@ const weatherReducer = (state = initialState, action) => {
                 icon: action.payload.current.condition.icon,
                 code: action.payload.current.condition.code,
 
-                wind_mph: action.payload.current.wind_mph,
-                wind_kph: action.payload.current.wind_kph,
+                wind_mph: action.payload.current.wind_mph.toFixed(),
+                wind_kph: action.payload.current.wind_kph.toFixed(),
                 wind_dir: action.payload.current.wind_dir,
 
                 pressure_mb: action.payload.current.pressure_mb,
@@ -80,10 +80,10 @@ const weatherReducer = (state = initialState, action) => {
 
                 humidity: action.payload.current.humidity,
 
-                feelslike_c: action.payload.current.feelslike_c,
-                feelslike_f: action.payload.current.feelslike_f,
+                feelslike_c: action.payload.current.feelslike_c.toFixed(),
+                feelslike_f: action.payload.current.feelslike_f.toFixed(),
 
-                vis_km: action.payload.current.vis_km,
+                vis_km: action.payload.current.vis_km.toFixed(),
                 vis_miles: action.payload.current.vis_miles,
 
                 maxtemp_c: action.payload.forecast.forecastday[0].day.maxtemp_c.toFixed(),

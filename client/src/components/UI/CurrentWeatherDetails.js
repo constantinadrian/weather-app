@@ -62,7 +62,7 @@ const CurrentWeatherDetails = (props) => {
                         <div className="d-flex">
                             <p className="w-50 px-3 text-end mb-1">Wind:</p>
                             <p className="w-50 px-3 text-start mb-1">
-                                {props.wind_dir} {props.wind_mph.toFixed()} mph
+                                {props.wind_dir} {props.wind_mph} mph
                             </p>
                         </div>
                     )}
@@ -71,7 +71,7 @@ const CurrentWeatherDetails = (props) => {
                         <div className="d-flex">
                             <p className="w-50 px-3 text-end mb-1">Wind:</p>
                             <p className="w-50 px-3 text-start mb-1">
-                                {props.wind_dir} {props.wind_kph.toFixed()} km/h
+                                {props.wind_dir} {props.wind_kph} km/h
                             </p>
                         </div>
                     )}
@@ -82,7 +82,7 @@ const CurrentWeatherDetails = (props) => {
                                 Feels Like:
                             </p>
                             <p className="w-50 px-3 text-start mb-1">
-                                {props.feelslike_c.toFixed()}°
+                                {props.feelslike_c}°
                             </p>
                         </div>
                     )}
@@ -93,7 +93,7 @@ const CurrentWeatherDetails = (props) => {
                                 Feels Like:
                             </p>
                             <p className="w-50 px-3 text-start mb-1">
-                                {props.feelslike_f.toFixed()}°
+                                {props.feelslike_f}°
                             </p>
                         </div>
                     )}
@@ -129,7 +129,7 @@ const CurrentWeatherDetails = (props) => {
                         <div className="d-flex">
                             <p className="w-50 px-3 text-end mb-1">Visibility:</p>
                             <p className="w-50 px-3 text-start mb-1">
-                                {props.vis_km.toFixed()} km/h
+                                {props.vis_km} km/h
                             </p>
                         </div>
                     )}

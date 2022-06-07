@@ -24,8 +24,8 @@ const favoriteCitiesReducer = (state = initialState, action) => {
                     {
                         city: action.payload.city,
                         search_location: action.payload.search_location,
-                        temp_c: action.payload.temp_c,
-                        temp_f: action.payload.temp_f,
+                        temp_c: Number(action.payload.temp_c).toFixed(),
+                        temp_f: Number(action.payload.temp_f).toFixed(),
                         is_day: action.payload.is_day,
                         icon: action.payload.icon,
                         code: action.payload.code,
@@ -47,8 +47,8 @@ const favoriteCitiesReducer = (state = initialState, action) => {
                     favorite.city === action.payload.location.name
                         ? {
                               ...favorite,
-                              temp_c: action.payload.current.temp_c,
-                              temp_f: action.payload.current.temp_f,
+                              temp_c: Number(action.payload.current.temp_c).toFixed(),
+                              temp_f: Number(action.payload.current.temp_f).toFixed(),
                               is_day: action.payload.current.is_day,
                               icon: action.payload.current.condition.icon,
                               code: action.payload.current.condition.code,
